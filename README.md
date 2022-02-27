@@ -19,6 +19,4 @@
 * add todo, and day buttons 
 * add day list 
 * display days horizontal center
-2. make day button working
-3. make todo button working
-
+2. working on day button function
