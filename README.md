@@ -1,9 +1,3 @@
-SRS
-1. Introduction
-2. Overall Description
-3. System Features
-4. External Interface Requirements
-5. Non-Functional Requirements
 
 
 * * *
