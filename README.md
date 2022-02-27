@@ -20,7 +20,4 @@
 * * *
 # Work Flow
 1. make home page structure
-* add todo, and day buttons 
-* add day list 
-* display days horizontal center
-2. working on day button function
+
