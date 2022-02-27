@@ -1,17 +1,16 @@
+import { Link } from "react-router-dom";
+
 export default function Header() {
   return (
     <div className="header">
       <h1>
-        <a href="/">Home</a>
+        <Link to="/">Home</Link>
       </h1>
 
       <div className="menu">
-        <a href="#x" className="link">
+        <Link to="/add_day" className="link">
           todo +
-        </a>
-        <a href="#x" className="link">
-          day +
-        </a>
+        </Link>
       </div>
     </div>
   );
