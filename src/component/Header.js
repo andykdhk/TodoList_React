@@ -4,9 +4,10 @@ export default function Header() {
       <h1>
         <a href="/">Home</a>
       </h1>
+
       <div className="menu">
         <a href="#x" className="link">
-          word +
+          todo +
         </a>
         <a href="#x" className="link">
           day +

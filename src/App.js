@@ -1,5 +1,6 @@
 import "./App.css";
 import Header from "./component/Header";
+import DayList from "./component/DayList";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 function App() {
@@ -7,6 +8,7 @@ function App() {
     <BrowserRouter>
       <div className="App">
         <Header />
+        <DayList />
         <Routes>
           <Route path="/" />
           <Route>{/* <EmptyPage /> */}</Route>

@@ -33,6 +33,15 @@ a {
 .header {
   position: relative;
 }
+.dayList {
+  position: relative;
+  color: red;
+}
+.day {
+  width: 200px;
+  display: inline-block;
+  color: blue;
+}
 
 .header .menu {
   position: absolute;
