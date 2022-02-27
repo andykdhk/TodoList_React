@@ -17,7 +17,5 @@
 2. show tasks(title, description)
 3. add,edit,del 
 
-* * *
-# Work Flow
-1. make home page structure
+
 
