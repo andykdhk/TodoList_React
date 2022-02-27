@@ -13,8 +13,8 @@
 2. show tasks
 3. add,edit,del 
 
-
-## Work Flow
+* * *
+# Work Flow
 1. make home page structure
 * add todo, and day buttons 
 * add day list 
