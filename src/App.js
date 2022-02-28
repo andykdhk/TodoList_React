@@ -1,7 +1,8 @@
 import "./App.css";
 import Header from "./component/Header";
 import DayList from "./component/DayList";
-import AddDay from "./component/AddDay";
+import AddTodo from "./component/AddTodo";
+import CreateDay from "./component/CreateDay";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 function App() {
@@ -12,7 +13,7 @@ function App() {
 
         <Routes>
           <Route path="/" element={<DayList />}></Route>
-          <Route path="/add_day" element={<AddDay />}></Route>
+          <Route path="/add_todo" element={[<CreateDay />]}></Route>
         </Routes>
       </div>
     </BrowserRouter>

@@ -8,8 +8,8 @@ export default function Header() {
       </h1>
 
       <div className="menu">
-        <Link to="/add_day" className="link">
-          todo +
+        <Link to="/add_todo" className="link">
+          day +
         </Link>
       </div>
     </div>

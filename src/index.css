@@ -139,3 +139,20 @@ button {
   height: 40px;
   font-size: 20px;
 }
+/* **************************************************** */
+.dayContainer {
+  display: flex;
+  justify-content: center;
+
+  color: blue;
+}
+.inputDay {
+  width: 60px;
+  height: 60px;
+  margin-left: 40px;
+  font-size: 30px;
+  text-align: center;
+}
+.add_btn {
+  margin-top: 40px;
+}
