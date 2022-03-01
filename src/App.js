@@ -1,7 +1,7 @@
 import "./App.css";
 import Header from "./component/Header";
 import DayList from "./component/DayList";
-import AddTodo from "./component/AddTodo";
+
 import CreateDay from "./component/CreateDay";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 

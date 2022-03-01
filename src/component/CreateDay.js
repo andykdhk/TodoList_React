@@ -1,9 +1,7 @@
 import { useNavigate } from "react-router";
-import { useEffect, useState } from "react";
-import useFetch from "../hooks/useFetch";
+import { useState } from "react";
 
 export default function CreateDay() {
-  const days = useFetch("http://localhost:3001/days");
   const navigate = useNavigate();
   const [dayNum, setDayNum] = useState();
 
@@ -19,7 +17,7 @@ export default function CreateDay() {
       }),
     }).then((res) => {
       if (res.ok) {
-        alert("생성이 완료 되었습니다");
+        alert("Day Added");
         navigate.push(`/`);
       }
     });
@@ -34,7 +32,7 @@ export default function CreateDay() {
           onChange={(e) => setDayNum(e.target.value)}
         ></input>
       </div>
-      {/* <h3>현재 일수 : {days.length}일</h3> */}
+
       <button onClick={addDay}>Add</button>
     </div>
   );
