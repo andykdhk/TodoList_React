@@ -22,6 +22,7 @@ export default function CreateDay() {
       }
     });
   }
+  function numCheck() {}
   return (
     <div>
       <div className="dayContainer">

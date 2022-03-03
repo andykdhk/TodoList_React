@@ -33,15 +33,6 @@ a {
 .header {
   position: relative;
 }
-.dayList {
-  position: relative;
-  color: red;
-}
-.day {
-  width: 200px;
-  display: inline-block;
-  color: blue;
-}
 
 .header .menu {
   position: absolute;
@@ -155,4 +146,16 @@ button {
 }
 .add_btn {
   margin-top: 40px;
+}
+/*dayList.js ****************************************************dayList.js*/
+.dayList {
+  position: relative;
+  color: red;
+}
+.day {
+  width: 100px;
+  display: inline-block;
+}
+li:nth-of-type(1n + 5) {
+  display: none;
 }

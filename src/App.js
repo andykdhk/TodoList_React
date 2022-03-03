@@ -1,6 +1,7 @@
 import "./App.css";
 import Header from "./component/Header";
 import DayList from "./component/DayList";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 import CreateDay from "./component/CreateDay";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
