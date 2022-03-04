@@ -3,14 +3,23 @@ import useFetch from "../hooks/useFetch";
 import { useEffect, useState } from "react";
 
 export default function DayList() {
-  const days = useFetch("http://localhost:3001/days");
+  console.log("daylist page loaded");
 
-  let sortDays = days.map((day) => day.day).sort((a, b) => a - b);
+  let [sortDays, setA] = useState([]);
+  const days = useFetch("http://localhost:3001/days")
+    .map((day) => day.day)
+    .sort((a, b) => a - b); //props
+
+  useEffect(() => {
+    setA(days);
+    console.log("useeffectworking");
+  }, []);
 
   function cutArr() {
-    sortDays = sortDays.slice(1);
-    console.log(sortDays);
+    setA(sortDays.slice(1));
+    console.log("after button", sortDays);
   }
+
   return (
     <div className="dayList">
       <h2>Daily task List</h2>

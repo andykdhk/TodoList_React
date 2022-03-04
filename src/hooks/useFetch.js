@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 
 export default function useFetch(url) {
+  console.log("useFetch page");
+
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -10,6 +12,7 @@ export default function useFetch(url) {
       })
       .then((data) => {
         setData(data);
+        console.log("setData activated");
       });
   }, [url]);
 
