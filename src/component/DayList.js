@@ -4,19 +4,19 @@ import { useEffect, useState } from "react";
 
 export default function DayList() {
   console.log("daylist page loaded");
-
-  let [sortDays, setA] = useState([]);
+  let [sortDays, setSort] = useState([]);
   const days = useFetch("http://localhost:3001/days")
     .map((day) => day.day)
-    .sort((a, b) => a - b); //props
+    .sort((a, b) => a - b);
 
   useEffect(() => {
-    setA(days);
-    console.log("useeffectworking");
+    setSort(days);
+    console.log("SORTED:sss", sortDays);
   }, []);
+  //let sortDays = days.map((day) => day.day).sort((a, b) => a - b);
 
   function cutArr() {
-    setA(sortDays.slice(1));
+    setSort(sortDays.slice(1));
     console.log("after button", sortDays);
   }
 
