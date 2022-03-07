@@ -6,40 +6,30 @@ export default function DayList() {
   console.log("daylist page loaded");
   let [sortDays, setSort] = useState([]);
   const [days, setDays] = useState([]);
-  let current;
+  let [current, setCurrent] = useState([]);
+
   useEffect(() => {
     fetch("http://localhost:3001/days")
       .then((res) => {
         return res.json();
       })
       .then((data) => {
-        setDays(data);
+        setDays(data.map((day) => day.day).sort((a, b) => a - b));
       });
   }, []);
 
-  //let [days, setDay] = useState([]);
-  // const days = useFetch("http://localhost:3001/days")
-  //   .map((day) => day.day)
-  //   .sort((a, b) => a - b);
-
-  // useEffect(() => {
-  //   setSort(days);
-  //   console.log("SORTED:", sortDays);
-  // }, []);
   //let sortDays = days.map((day) => day.day).sort((a, b) => a - b);
   function prevBtn() {
     setDays(days.slice(-1));
   }
   function nextBtn() {
     if (days.length >= 4) {
-      //console.log(days.splice(0, 1));
-      // setDays(days.splice(0, 1));
       setDays(days.slice(4));
     } else {
-      alert("last page");
+      alert("last pages");
     }
   }
-  console.log(days.length);
+
   return (
     <div className="dayList">
       <h2>Daily task List</h2>
@@ -51,9 +41,9 @@ export default function DayList() {
       <div>
         <ul>
           <button onClick={prevBtn}>Previous</button>
-          {days.map((day) => (
-            <li key={day.id} className="day">
-              <Link to={`/day/${day.day}`}>Day {day.day}</Link>
+          {days.map((day, i) => (
+            <li key={i} className="day">
+              <Link to={`/day/${day}`}>Day {day}</Link>
             </li>
           ))}
           <button onClick={nextBtn}>Next</button>
@@ -67,4 +57,9 @@ export default function DayList() {
             <li key={day.id} className="day">
               <Link to={`/day/${day.day}`}>Day {day.day}</Link>
             </li>
-          ))} */
+          ))} 
+          {current.map((day, i) => (
+            <li key={i} className="day">
+              <Link to={`/day/${day}`}>Day {day}</Link>
+            </li>
+          ))}*/
