@@ -1,33 +1,24 @@
 import { Link } from "react-router-dom";
-//import useFetch from "../hooks/useFetch";
+import useFetch from "../hooks/useFetch";
 import { useEffect, useState } from "react";
 
 export default function DayList() {
   console.log("daylist page loaded");
   let [sortDays, setSort] = useState([]);
-  let [days, setDays] = useState([]);
+  let [days2, setDays] = useState([]);
   let [current, setCurrent] = useState([]);
   let [curPg, setCurrentPg] = useState(0);
   let [lasPg, setLastPg] = useState(4);
   const [gap, setGap] = useState(4);
 
+  let days = useFetch("http://localhost:3001/days")
+    .map((day) => day.day)
+    .sort((a, b) => a - b);
+
   useEffect(() => {
-    fetch("http://localhost:3001/days")
-      .then((res) => {
-        return res.json();
-      })
-      .then((data) => {
-        setDays(data.map((day) => day.day).sort((a, b) => a - b));
-        return data.map((day) => day.day).sort((a, b) => a - b);
-      })
-      .then((data) => {
-        setCurrent(data.slice(0, 4));
-        // setCurrentPg(curPg + gap);
-        // setLastPg(lasPg + gap);
-      });
+    setCurrent(days.slice(0, 4));
   }, []);
 
-  //let sortDays = days.map((day) => day.day).sort((a, b) => a - b);
   function prevBtn() {
     console.log(curPg, lasPg);
     if (curPg === 0) {
@@ -41,11 +32,6 @@ export default function DayList() {
       setLastPg(lasPg - 4);
       setCurrent(days.slice(curPg - 4, lasPg - 4));
     }
-
-    // // setLastPg(curPg - 4);
-    // console.log(days.slice(curPg - 8, curPg - 4));
-
-    // setCurrent(days.slice(lasPg, curPg));
   }
 
   function nextBtn() {
@@ -97,3 +83,17 @@ export default function DayList() {
               <Link to={`/day/${day}`}>Day {day}</Link>
             </li>
           ))}*/
+
+// useEffect(() => {
+//   fetch("http://localhost:3001/days")
+//     .then((res) => {
+//       return res.json();
+//     })
+//     .then((data) => {
+//       setDays(data.map((day) => day.day).sort((a, b) => a - b));
+//       return data.map((day) => day.day).sort((a, b) => a - b);
+//     })
+//     .then((data) => {
+//       setCurrent(data.slice(0, 4));
+//     });
+// }, []);
