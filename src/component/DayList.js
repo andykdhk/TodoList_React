@@ -8,8 +8,7 @@ export default function DayList() {
   let [days, setDays] = useState([]);
   let [current, setCurrent] = useState([]);
   let [curPg, setCurrentPg] = useState(0);
-  let [lasPg, setLastPg] = useState(0);
-  let [val, setVal] = useState(2);
+  let [lasPg, setLastPg] = useState(4);
   const [gap, setGap] = useState(4);
 
   useEffect(() => {
@@ -23,34 +22,45 @@ export default function DayList() {
       })
       .then((data) => {
         setCurrent(data.slice(0, 4));
-        setCurrentPg(curPg + gap);
-        setLastPg(val * gap);
-        setVal(val + 1);
+        // setCurrentPg(curPg + gap);
+        // setLastPg(lasPg + gap);
       });
   }, []);
-  console.log(days);
+
   //let sortDays = days.map((day) => day.day).sort((a, b) => a - b);
   function prevBtn() {
-    setCurrentPg(curPg - 4);
-    setLastPg(curPg - 8);
-    // setLastPg(curPg - 4);
-    console.log(days.slice(curPg - 8, curPg - 4));
-    // console.log(-curPg, -curPg - 4);
-    setCurrent(days.slice(lasPg, curPg));
-    //console.log();
-    console.log(curPg, lasPg, val);
+    console.log(curPg, lasPg);
+    if (curPg === 0) {
+      alert("first page");
+    } else if (curPg > days.length) {
+      setCurrentPg(curPg - 4);
+      setLastPg(lasPg - 4);
+      setCurrent(days.slice(curPg, lasPg));
+    } else {
+      setCurrentPg(curPg - 4);
+      setLastPg(lasPg - 4);
+      setCurrent(days.slice(curPg - 4, lasPg - 4));
+    }
+
+    // // setLastPg(curPg - 4);
+    // console.log(days.slice(curPg - 8, curPg - 4));
+
+    // setCurrent(days.slice(lasPg, curPg));
   }
 
   function nextBtn() {
     if (current.length < 4) {
       alert("last page");
-      console.log(days, current);
+      setCurrentPg(curPg - 4);
+      setLastPg(lasPg - 4);
+    } else if (curPg === 0) {
+      setCurrentPg(curPg + gap);
+      setLastPg(lasPg + gap);
+      setCurrent(days.slice(curPg + 4, lasPg + 4));
     } else {
-      setCurrentPg(lasPg);
-      setLastPg(val * gap);
-      setVal(val + 1);
-      console.log(curPg, lasPg, val);
-      setCurrent(days.slice(curPg, lasPg));
+      setCurrentPg(curPg + gap);
+      setLastPg(lasPg + gap);
+      setCurrent(days.slice(curPg + 4, lasPg + 4));
     }
   }
 
