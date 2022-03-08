@@ -5,8 +5,12 @@ import { useEffect, useState } from "react";
 export default function DayList() {
   console.log("daylist page loaded");
   let [sortDays, setSort] = useState([]);
-  const [days, setDays] = useState([]);
+  let [days, setDays] = useState([]);
   let [current, setCurrent] = useState([]);
+  let [curPg, setCurrentPg] = useState(0);
+  let [lasPg, setLastPg] = useState(0);
+  let [val, setVal] = useState(2);
+  const [gap, setGap] = useState(4);
 
   useEffect(() => {
     fetch("http://localhost:3001/days")
@@ -15,18 +19,38 @@ export default function DayList() {
       })
       .then((data) => {
         setDays(data.map((day) => day.day).sort((a, b) => a - b));
+        return data.map((day) => day.day).sort((a, b) => a - b);
+      })
+      .then((data) => {
+        setCurrent(data.slice(0, 4));
+        setCurrentPg(curPg + gap);
+        setLastPg(val * gap);
+        setVal(val + 1);
       });
   }, []);
-
+  console.log(days);
   //let sortDays = days.map((day) => day.day).sort((a, b) => a - b);
   function prevBtn() {
-    setDays(days.slice(-1));
+    setCurrentPg(curPg - 4);
+    setLastPg(curPg - 8);
+    // setLastPg(curPg - 4);
+    console.log(days.slice(curPg - 8, curPg - 4));
+    // console.log(-curPg, -curPg - 4);
+    setCurrent(days.slice(lasPg, curPg));
+    //console.log();
+    console.log(curPg, lasPg, val);
   }
+
   function nextBtn() {
-    if (days.length >= 4) {
-      setDays(days.slice(4));
+    if (current.length < 4) {
+      alert("last page");
+      console.log(days, current);
     } else {
-      alert("last pages");
+      setCurrentPg(lasPg);
+      setLastPg(val * gap);
+      setVal(val + 1);
+      console.log(curPg, lasPg, val);
+      setCurrent(days.slice(curPg, lasPg));
     }
   }
 
@@ -41,7 +65,7 @@ export default function DayList() {
       <div>
         <ul>
           <button onClick={prevBtn}>Previous</button>
-          {days.map((day, i) => (
+          {current.map((day, i) => (
             <li key={i} className="day">
               <Link to={`/day/${day}`}>Day {day}</Link>
             </li>
