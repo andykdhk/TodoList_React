@@ -7,10 +7,9 @@ export default function DayList() {
 
   let [curPg, setCurrentPg] = useState(0);
   let [lasPg, setLastPg] = useState(4);
-  let [a, setA] = useState("a");
-  let [b, setB] = useState("b");
+
   let [gap, setGap] = useState(4);
-  // const gap = 4;
+
   let x = gap;
   let [order, setOrder] = useState(true);
   const days = useFetch("http://localhost:3001/days");
@@ -19,6 +18,10 @@ export default function DayList() {
     /*first page */
     if (curPg === 0) {
       alert("first page");
+    } else if (curPg < gap) {
+      console.log("now");
+      setCurrentPg(0);
+      setLastPg(gap);
     } else {
       setCurrentPg(curPg - gap);
       setLastPg(lasPg - gap);
@@ -46,8 +49,13 @@ export default function DayList() {
   function gapBtn() {
     x = x + 1;
     setGap(x);
-    setLastPg(x);
+    if (curPg === 0) {
+      setLastPg(x);
+    } else {
+      setLastPg(curPg + x);
+    }
   }
+  console.log("currentpg;", curPg, "last pge:", lasPg);
   return (
     <div className="dayList">
       <h2>Daily task List</h2>
