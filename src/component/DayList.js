@@ -5,21 +5,21 @@ import { useEffect, useState } from "react";
 export default function DayList() {
   console.log("daylist page loaded");
 
+  /*VARIABLES */
   let [curPg, setCurrentPg] = useState(0);
   let [lasPg, setLastPg] = useState(4);
-
-  let [gap, setGap] = useState(4);
-
-  let x = gap;
+  let gap = 5;
   let [order, setOrder] = useState(true);
   const days = useFetch("http://localhost:3001/days");
 
+  /*FUNCTIONS */
+
+  //purpose: button move to previous page
   function prevBtn() {
     /*first page */
     if (curPg === 0) {
       alert("first page");
     } else if (curPg < gap) {
-      console.log("now");
       setCurrentPg(0);
       setLastPg(gap);
     } else {
@@ -27,7 +27,7 @@ export default function DayList() {
       setLastPg(lasPg - gap);
     }
   }
-
+  //purpose: button move to next page
   function nextBtn() {
     /*last page */
     if (days.length < lasPg) {
@@ -37,7 +37,7 @@ export default function DayList() {
       setLastPg(lasPg + gap);
     }
   }
-
+  //purpose: button for ascending/descending order
   function sorting(a, b) {
     if (order === true) {
       return a - b;
@@ -45,17 +45,18 @@ export default function DayList() {
       return b - a;
     }
   }
-
-  function gapBtn() {
-    x = x + 1;
-    setGap(x);
+  //purpose: dropdown when maximum display number selected
+  function handleChange(e) {
+    gap = Number(e.target.value);
     if (curPg === 0) {
-      setLastPg(x);
+      setLastPg(gap);
     } else {
-      setLastPg(curPg + x);
+      setLastPg(curPg + gap);
     }
   }
-  console.log("currentpg;", curPg, "last pge:", lasPg);
+  console.log("currentpg;", curPg, "last pge:", lasPg, "gap:", gap);
+
+  /*JSX PART */
   return (
     <div className="dayList">
       <h2>Daily task List</h2>
@@ -67,7 +68,15 @@ export default function DayList() {
         <button onClick={() => setOrder(false)} className="dscOrder">
           D-day Mode
         </button>
-        <button onClick={gapBtn}>gap: {gap}</button>
+      </div>
+      <div>
+        <label>Display</label>
+        <select onChange={handleChange}>
+          <option>select</option>
+          <option value="5">5</option>
+          <option value="10">10</option>
+          <option value="15">15</option>
+        </select>
       </div>
 
       <div>
@@ -89,6 +98,7 @@ export default function DayList() {
   );
 }
 
+/*memo */
 /* {days.map((day) => (
             <li key={day.id} className="day">
               <Link to={`/day/${day.day}`}>Day {day.day}</Link>
