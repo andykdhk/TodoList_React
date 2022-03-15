@@ -1,10 +1,22 @@
 import { useNavigate } from "react-router";
 import { useState } from "react";
-
-export default function CreateDay() {
+import useFetch from "../hooks/useFetch";
+export default function AddDay() {
   const navigate = useNavigate();
   const [dayNum, setDayNum] = useState();
+  const days = useFetch("http://localhost:3001/days");
+  const day = days.map((day) => day.day);
 
+  function getDay(e) {
+    const found = day.find((element) => element === Number(e.target.value));
+
+    if (found === Number(e.target.value)) {
+      //console.log("duplicated", Number(e.target.value));
+      alert("Already exist");
+    } else {
+      setDayNum(e.target.value);
+    }
+  }
   function addDay() {
     console.log("button activated", dayNum);
     fetch(`http://localhost:3001/days/`, {
@@ -18,7 +30,7 @@ export default function CreateDay() {
     }).then((res) => {
       if (res.ok) {
         alert("Day Added");
-        navigate.push(`/`);
+        navigate(`/`);
       }
     });
   }
@@ -30,7 +42,8 @@ export default function CreateDay() {
         <input
           type="number"
           className="inputDay"
-          onChange={(e) => setDayNum(e.target.value)}
+          //onChange={(e) => setDayNum(e.target.value)}
+          onChange={getDay}
         ></input>
       </div>
 
