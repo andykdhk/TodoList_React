@@ -8,8 +8,7 @@ export default function DayList() {
   /*VARIABLES */
   let [curPg, setCurrentPg] = useState(0);
   let [lasPg, setLastPg] = useState(4);
-  //let [gap, setGap] = useState(4);
-  let gap = 4;
+  let [gap, setGap] = useState(4);
   let [order, setOrder] = useState(true);
   const days = useFetch("http://localhost:3001/days");
 
@@ -48,8 +47,8 @@ export default function DayList() {
   }
   //purpose: dropdown when maximum display number selected
   function handleChange(e) {
-    //setGap(Number(e.target.value));
-    gap = Number(e.target.value);
+    let gap = Number(e.target.value);
+    setGap(gap);
     if (curPg === 0) {
       setLastPg(gap);
     } else {
