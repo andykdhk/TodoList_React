@@ -82,7 +82,7 @@ export default function DayList() {
       <div>
         <label>Display</label>
         <select onChange={handleChange}>
-          <option>select</option>
+          <option value="4">select</option>
           <option value="5">5</option>
           <option value="10">10</option>
           <option value="15">15</option>

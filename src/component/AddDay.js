@@ -11,28 +11,34 @@ export default function AddDay() {
     const found = day.find((element) => element === Number(e.target.value));
 
     if (found === Number(e.target.value)) {
-      //console.log("duplicated", Number(e.target.value));
       alert("Already exist");
+    } else if (Number(e.target.value) < 0) {
+      alert("No negative number");
     } else {
       setDayNum(e.target.value);
     }
   }
   function addDay() {
-    console.log("button activated", dayNum);
-    fetch(`http://localhost:3001/days/`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        day: Number(dayNum),
-      }),
-    }).then((res) => {
-      if (res.ok) {
-        alert("Day Added");
-        navigate(`/`);
-      }
-    });
+    if (dayNum == null) {
+      console.log("undefined");
+      return;
+    } else {
+      console.log("button activated", dayNum);
+      fetch(`http://localhost:3001/days/`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          day: Number(dayNum),
+        }),
+      }).then((res) => {
+        if (res.ok) {
+          alert("Day Added");
+          navigate(`/`);
+        }
+      });
+    }
   }
   function numCheck() {}
   return (
@@ -41,8 +47,8 @@ export default function AddDay() {
         <h3>Day:</h3>
         <input
           type="number"
+          min="0"
           className="inputDay"
-          //onChange={(e) => setDayNum(e.target.value)}
           onChange={getDay}
         ></input>
       </div>
