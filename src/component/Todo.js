@@ -5,10 +5,7 @@ import { useParams } from "react-router-dom";
 
 export default function Todo() {
   const { day } = useParams();
-
-  const tasks = useFetch('http://localhost:3001/tasks?day=${day}`)
-
-
+  const tasks = useFetch(`http://localhost:3001/tasks?day=${day}`);
 
   return (
     <div>
@@ -16,7 +13,7 @@ export default function Todo() {
       <table>
         <tbody>
           {tasks.map((task) => (
-            <td>task.task</td>
+            <td>{task.task}</td>
           ))}
         </tbody>
       </table>

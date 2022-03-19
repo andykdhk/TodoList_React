@@ -99,13 +99,13 @@
     {
       "id": 2,
       "day": 1,
-      "task": "책",
+      "task": "공책",
       "isDone": false
     },
     {
       "id": 3,
       "day": 1,
-      "task": "책",
+      "task": "만화책책",
       "isDone": false
     },
     {
