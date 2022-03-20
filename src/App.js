@@ -2,7 +2,7 @@ import "./App.css";
 import Header from "./component/Header";
 import DayList from "./component/DayList";
 import AddDay from "./component/AddDay";
-import Todo from "./component/Todo";
+import Day from "./component/Day";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 function App() {
@@ -14,7 +14,7 @@ function App() {
         <Routes>
           <Route path="/" element={<DayList />}></Route>
           <Route path="/add_todo" element={[<AddDay />]}></Route>
-          <Route path="/day/:day" element={[<Todo />]}></Route>
+          <Route path="/day/:day" element={[<Day />]}></Route>
         </Routes>
       </div>
     </BrowserRouter>
