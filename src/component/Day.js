@@ -11,7 +11,10 @@ export default function Day() {
   return (
     <div>
       <div>Todo list</div>
-      <button>Add</button>
+      <div>
+        <Link to={`/create_todo`}>Add</Link>
+      </div>
+
       <button>Delete</button>
       <table>
         <tbody>
