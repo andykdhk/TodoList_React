@@ -1,7 +1,9 @@
 import { useRef } from "react";
 import { useNavigate } from "react-router";
-
+import { useParams } from "react-router-dom";
 export default function CreateTodo() {
+  const navigate = useNavigate();
+  const { day } = useParams();
   function onSubmit(e) {
     e.preventDefault();
 
@@ -11,14 +13,14 @@ export default function CreateTodo() {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        // day: Number(day),
+        day: `${day}`,
         task: taskRef.current.value,
         isDone: false,
       }),
     }).then((res) => {
       if (res.ok) {
         alert("Task Added");
-        //navigate(`/`);
+        navigate(`/`);
       }
     });
   }

@@ -16,7 +16,7 @@ function App() {
           <Route path="/" element={<DayList />}></Route>
           <Route path="/add_todo" element={[<AddDay />]}></Route>
           <Route path="/day/:day" element={[<Day />]}></Route>
-          <Route path="/create_todo" element={[<CreateTodo />]}></Route>
+          <Route path="/create_todo/:day" element={[<CreateTodo />]}></Route>
         </Routes>
       </div>
     </BrowserRouter>

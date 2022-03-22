@@ -12,7 +12,7 @@ export default function Day() {
     <div>
       <div>Todo list</div>
       <div>
-        <Link to={`/create_todo`}>Add</Link>
+        <Link to={`/create_todo/${day}`}>Add</Link>
       </div>
 
       <button>Delete</button>
