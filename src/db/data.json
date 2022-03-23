@@ -163,9 +163,7 @@
       "isDone": false
     },
     {
-      "day": "0",
       "task": "a",
-      "isDone": false,
       "id": 16
     },
     {
@@ -173,6 +171,12 @@
       "task": "아옹",
       "isDone": false,
       "id": 17
+    },
+    {
+      "day": "0",
+      "task": "aaa",
+      "isDone": false,
+      "id": 18
     }
   ]
 }

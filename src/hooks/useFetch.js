@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
 
 export default function useFetch(url) {
-  console.log("useFetch page");
-
   const [data, setData] = useState([]);
 
   useEffect(() => {

@@ -55,16 +55,16 @@ export default function DayList() {
       setLastPg(curPg + gap);
     }
   }
-  console.log(
-    "currentpg;",
-    curPg,
-    "last pge:",
-    lasPg,
-    "gap:",
-    gap,
-    "days length",
-    days.length
-  );
+  // console.log(
+  //   "currentpg;",
+  //   curPg,
+  //   "last pge:",
+  //   lasPg,
+  //   "gap:",
+  //   gap,
+  //   "days length",
+  //   days.length
+  // );
 
   /*JSX PART */
   return (
