@@ -8,6 +8,16 @@ export default function Day() {
   const { day } = useParams();
   const tasks = useFetch(`http://localhost:3001/tasks?day=${day}`);
 
+  function del() {
+    tasks.forEach((todo) => {
+      if (todo.isDone === true) {
+        fetch(`http://localhost:3001/tasks/${todo.id}`, {
+          method: "DELETE",
+        });
+      }
+    });
+  }
+
   return (
     <div>
       <div>Todo list</div>
@@ -15,7 +25,7 @@ export default function Day() {
         <Link to={`/create_todo/${day}`}>Add</Link>
       </div>
 
-      <button>Delete</button>
+      <button onClick={del}>Delete</button>
       <table>
         <tbody>
           {tasks.map((task) => (

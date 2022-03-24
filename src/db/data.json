@@ -163,20 +163,10 @@
       "isDone": false
     },
     {
-      "task": "a",
-      "id": 16
-    },
-    {
       "day": "4",
       "task": "아옹",
       "isDone": false,
       "id": 17
-    },
-    {
-      "day": "0",
-      "task": "aaa",
-      "isDone": false,
-      "id": 18
     }
   ]
 }
