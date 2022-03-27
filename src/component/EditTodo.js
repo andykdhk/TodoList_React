@@ -23,7 +23,7 @@ export default function EditTodo() {
     }).then((res) => {
       if (res.ok) {
         alert("Task Edited");
-        navigate(`/`);
+        navigate(`/day/${day}`);
       }
     });
   }

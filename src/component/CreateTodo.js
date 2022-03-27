@@ -23,7 +23,7 @@ export default function CreateTodo() {
     }).then((res) => {
       if (res.ok) {
         alert("Task Added");
-        navigate(`/`);
+        navigate(`/day/${day}`);
       }
     });
   }

@@ -6,7 +6,6 @@ export default function Todo({ task }) {
   const [isDone, setIsDone] = useState(task.isDone);
 
   function toggleDone() {
-    //console.log(isDone);
     fetch(`http://localhost:3001/tasks/${task.id}`, {
       method: "PUT",
       headers: {
