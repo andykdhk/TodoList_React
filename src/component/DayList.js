@@ -66,7 +66,7 @@ export default function DayList() {
   //   days.length
   // );
 
-  /*JSX PART */
+  /*JSX */
   return (
     <div className="dayList">
       <h2>Daily task List</h2>

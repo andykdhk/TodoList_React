@@ -3,11 +3,15 @@ import { useState } from "react";
 import useFetch from "../hooks/useFetch";
 
 export default function AddDay() {
+  /*VARIABLES */
   const navigate = useNavigate();
   const [dayNum, setDayNum] = useState();
   const days = useFetch("http://localhost:3001/days");
   const day = days.map((day) => day.day);
 
+  /*FUNCTIONS */
+
+  //purpose: check if day is exist
   function getDay(e) {
     const found = day.find((element) => element === Number(e.target.value));
 
@@ -19,6 +23,8 @@ export default function AddDay() {
       setDayNum(e.target.value);
     }
   }
+
+  //purpose: add day to db
   function addDay() {
     if (dayNum == null) {
       console.log("undefined");
@@ -41,7 +47,8 @@ export default function AddDay() {
       });
     }
   }
-  function numCheck() {}
+
+  /*JSX */
   return (
     <div>
       <div className="dayContainer">

@@ -5,9 +5,13 @@ import { useParams } from "react-router-dom";
 import Todo from "./Todo";
 
 export default function Day() {
+  /*VARIABLES */
   const { day } = useParams();
   const tasks = useFetch(`http://localhost:3001/tasks?day=${day}`);
 
+  /*FUNCTIONS */
+
+  //purpose: delete the tasks
   function del() {
     tasks.forEach((todo) => {
       if (todo.isDone === true) {
@@ -18,6 +22,7 @@ export default function Day() {
     });
   }
 
+  /*JSX */
   return (
     <div>
       <div>Todo list</div>

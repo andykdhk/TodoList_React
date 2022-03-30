@@ -3,10 +3,14 @@ import { useNavigate } from "react-router";
 import { useParams } from "react-router-dom";
 
 export default function EditTodo() {
+  /*VARIABLES */
   const navigate = useNavigate();
   const { day, id } = useParams();
   const taskRef = useRef(null);
 
+  /*FUNCTIONS */
+
+  //purpose: update task
   function onSubmit(e) {
     e.preventDefault();
     console.log(`${day},${id}`);
@@ -28,6 +32,7 @@ export default function EditTodo() {
     });
   }
 
+  /*JSX */
   return (
     <form onSubmit={onSubmit}>
       <div>

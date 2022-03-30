@@ -3,10 +3,14 @@ import { useNavigate } from "react-router";
 import { useParams } from "react-router-dom";
 
 export default function CreateTodo() {
+  /*VARIABLES */
   const navigate = useNavigate();
   const { day } = useParams();
   const taskRef = useRef(null);
 
+  /*FUNCTIONS */
+
+  //purpose: add task to db
   function onSubmit(e) {
     e.preventDefault();
 
@@ -28,6 +32,7 @@ export default function CreateTodo() {
     });
   }
 
+  /*JSX */
   return (
     <form onSubmit={onSubmit}>
       <div>

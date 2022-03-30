@@ -2,9 +2,13 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 export default function Todo({ task }) {
+  /*VARIABLES */
   const { day } = useParams();
   const [isDone, setIsDone] = useState(task.isDone);
 
+  /*FUNCTIONS */
+
+  //purpose:update todo check box
   function toggleDone() {
     fetch(`http://localhost:3001/tasks/${task.id}`, {
       method: "PUT",
@@ -22,6 +26,7 @@ export default function Todo({ task }) {
     });
   }
 
+  /*JSX */
   return (
     <tr>
       <td>
