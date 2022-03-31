@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router";
 export default function Todo({ task }) {
   /*VARIABLES */
   const { day } = useParams();
   const [isDone, setIsDone] = useState(task.isDone);
+  const navigate = useNavigate();
 
   /*FUNCTIONS */
 

@@ -173,18 +173,6 @@
       "id": 17
     },
     {
-      "day": "0",
-      "task": "shit",
-      "isDone": false,
-      "id": 18
-    },
-    {
-      "day": "0",
-      "task": "riding a bike",
-      "isDone": false,
-      "id": 19
-    },
-    {
       "day": "4",
       "task": "a",
       "isDone": false,
@@ -207,6 +195,30 @@
       "task": "c",
       "isDone": false,
       "id": 23
+    },
+    {
+      "day": "0",
+      "task": "1",
+      "isDone": true,
+      "id": 26
+    },
+    {
+      "day": "0",
+      "task": "2",
+      "isDone": true,
+      "id": 27
+    },
+    {
+      "day": "0",
+      "task": "3",
+      "isDone": false,
+      "id": 28
+    },
+    {
+      "day": "0",
+      "task": "4",
+      "isDone": false,
+      "id": 29
     }
   ]
 }
