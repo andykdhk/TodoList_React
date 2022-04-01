@@ -6,12 +6,14 @@ export default function Todo({ task }) {
   /*VARIABLES */
   const { day } = useParams();
   const [isDone, setIsDone] = useState(task.isDone);
+  let [i, setI] = useState(0);
   const navigate = useNavigate();
 
   /*FUNCTIONS */
 
   //purpose:update todo check box
   function toggleDone() {
+    setI(i++);
     fetch(`http://localhost:3001/tasks/${task.id}`, {
       method: "PUT",
       headers: {

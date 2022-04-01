@@ -10,26 +10,28 @@ export default function Day() {
   const { day } = useParams();
   const tasks = useFetch(`http://localhost:3001/tasks?day=${day}`);
   const navigate = useNavigate();
-  let [isDone, setIsDone] = useState();
+  let [i, setI] = useState(0);
 
   /*FUNCTIONS */
 
   //purpose: delete the tasks
   function del() {
-    console.log("check:", isDone);
-    // console.log("del button pressed");
-    // tasks.forEach((todo) => {
-    //   if (todo.isDone === true) {
-    //     fetch(`http://localhost:3001/tasks/${todo.id}`, {
-    //       method: "DELETE",
-    //     }).then((res) => {
-    //       if (res.ok) {
-    //         alert("Task Deleted");
-    //         navigate(`/day/${day}`);
-    //       }
-    //     });
-    //   }
-    // });
+    setI(i++);
+    tasks.forEach((todo) => {
+      console.log("check:", todo.isDone);
+
+      if (todo.isDone === true) {
+        fetch(`http://localhost:3001/tasks/${todo.id}`, {
+          method: "DELETE",
+        }).then((res) => {
+          if (res.ok) {
+            alert("Task Deleted");
+
+            // navigate(`/day/${day}`);
+          }
+        });
+      }
+    });
   }
 
   /*JSX */
@@ -43,8 +45,8 @@ export default function Day() {
       <button onClick={del}>Delete</button>
       <table>
         <tbody>
-          {tasks.map((task) => (
-            <Todo task={task} key={task.id} />
+          {tasks.map((task, i) => (
+            <Todo task={task} key={i} />
           ))}
         </tbody>
       </table>
